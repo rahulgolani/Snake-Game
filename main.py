@@ -19,7 +19,9 @@ GAMECLOSE=False
 
 POS_X=100
 POS_Y=100
-# VELOCITY=1
+POS_X_CHANGE=0
+POS_Y_CHANGE=0
+
 # clock=pygame.time.Clock()
 # RECTANGLE=(200,200,20,20)
 
@@ -35,22 +37,28 @@ while not GAMECLOSE:
             GAMECLOSE=True
         if event.type==pygame.KEYDOWN:
             if event.key==pygame.K_LEFT:
-                POS_X-=10
+                POS_X_CHANGE = -10
+                POS_Y_CHANGE = 0
+                # on having pressed the key doesnt make the snake move because pygame doesnot considers that an event if we have one keypressed for a long time
         if event.type==pygame.KEYDOWN:
             if event.key==pygame.K_RIGHT:
-                POS_X+=10
+                POS_X_CHANGE = 10
+                POS_Y_CHANGE = 0
         if event.type==pygame.KEYDOWN:
             if event.key==pygame.K_UP:
-                POS_Y-=10
+                POS_Y_CHANGE = -10
+                POS_X_CHANGE = 0
         if event.type==pygame.KEYDOWN:
             if event.key==pygame.K_DOWN:
-                POS_Y+=10
+                POS_Y_CHANGE = -10
+                POS_X_CHANGE = 0
 
         # if event.type==pygame.K_UP:
         #     INITIAL_POS_Y-=VELOCITY
         # if event.type==pygame.K_DOWN:
         #     INITIAL_POS_Y+=VELOCITY
-
+    POS_X+=POS_X_CHANGE
+    POS_Y+=POS_Y_CHANGE
     # draw on the surface
     gameScreen.fill((176,176,255))
     # another way to fill the screen is using sprites(images)
