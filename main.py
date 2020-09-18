@@ -22,10 +22,8 @@ POS_Y=100
 POS_X_CHANGE=0
 POS_Y_CHANGE=0
 
-# clock=pygame.time.Clock()
-# RECTANGLE=(200,200,20,20)
-
-
+clock=pygame.time.Clock()
+# returns a pygame clock object
 
 while not GAMECLOSE:
     # gets all the events from event queue
@@ -50,13 +48,9 @@ while not GAMECLOSE:
                 POS_X_CHANGE = 0
         if event.type==pygame.KEYDOWN:
             if event.key==pygame.K_DOWN:
-                POS_Y_CHANGE = -10
+                POS_Y_CHANGE = 10
                 POS_X_CHANGE = 0
 
-        # if event.type==pygame.K_UP:
-        #     INITIAL_POS_Y-=VELOCITY
-        # if event.type==pygame.K_DOWN:
-        #     INITIAL_POS_Y+=VELOCITY
     POS_X+=POS_X_CHANGE
     POS_Y+=POS_Y_CHANGE
     # draw on the surface
@@ -68,14 +62,12 @@ while not GAMECLOSE:
     # draw snake and snake's food
     snake=pygame.draw.rect(gameScreen,BLACK,(POS_X,POS_Y,10,10))
     # (x,y,width,height) coordinates of the rectangle
-    # INITIAL_POS_Y+=VELOCITY
-    # snake.move_ip(INITIAL_POS_X,INITIAL_POS_Y)
 
     # pygame.draw.rect(gameScreen,RED,(100,290,20,20))
-
     # (x,y,width,height) of rectangle
 
-    # clock.tick(30)
+    clock.tick(30)
+    # fps affects the processing speed
 
     # render the content
     pygame.display.update()
